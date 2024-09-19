@@ -1,3 +1,7 @@
+## Jack Autieri
+## The purpose of this file is to restructure the naming format of "LastName, FirstName MiddleName"
+## In an Excel cell divide them into 3 individual columns with their respective information
+
 library(dplyr)
 library(readxl)
 library(writexl)
