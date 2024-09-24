@@ -1,0 +1,27 @@
+# Jack Autieri
+# The purpose of this file is to restructure a cell in excel with the format of First Name, Last Name into
+# two seperate columns firstName and lastName
+
+library(tidyverse)
+library(readxl)
+library(stringr)
+
+# Load your data from the Excel file
+df <- read_excel("Insert excel filepath here")
+View(df)
+
+# Split the "name" column into "firstName" and "lastName" columns, keeping the original "name" column
+df <- df %>%
+  mutate(firstName = str_split_fixed(name, " ", 2)[,1], lastName = str_split_fixed(name, " ", 2)[,2])
+
+# View the updated data frame
+print(df)
+
+# Define the file path where the updated data should be saved (in your Downloads folder)
+file_path <- ""  # Note: CSV format is used
+
+# Save the updated data to the specified path in CSV format
+write.csv(df, file_path, row.names = FALSE)
+
+# Inform the user
+cat("The file has been saved to your Downloads folder at:", file_path)
